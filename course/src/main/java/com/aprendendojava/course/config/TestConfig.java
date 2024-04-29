@@ -1,8 +1,10 @@
 package com.aprendendojava.course.config;
 
+import com.aprendendojava.course.entities.Category;
 import com.aprendendojava.course.entities.Order;
 import com.aprendendojava.course.entities.User;
 import com.aprendendojava.course.entities.enums.OrderStatus;
+import com.aprendendojava.course.repositories.CategoryRepository;
 import com.aprendendojava.course.repositories.OrderRepository;
 import com.aprendendojava.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class TestConfig implements CommandLineRunner {
     private UserRepository userRepository;
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -32,5 +36,11 @@ public class TestConfig implements CommandLineRunner {
         Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, u2);
         Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT, u1);
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+
+        Category category1 = new Category(null, "Electronics");
+        Category category2 = new Category(null, "Books");
+        Category category3 = new Category(null, "Computers");
+        categoryRepository.saveAll(Arrays.asList(category1, category2, category3));
+
     }
 }
