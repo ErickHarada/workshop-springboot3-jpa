@@ -2,6 +2,7 @@ package com.aprendendojava.course.entities.pk;
 
 import com.aprendendojava.course.entities.Order;
 import com.aprendendojava.course.entities.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
