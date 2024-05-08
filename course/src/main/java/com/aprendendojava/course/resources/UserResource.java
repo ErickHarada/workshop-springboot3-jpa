@@ -2,6 +2,7 @@ package com.aprendendojava.course.resources;
 
 import com.aprendendojava.course.entities.User;
 import com.aprendendojava.course.services.UserService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,5 +41,11 @@ public class UserResource {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         userService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User obj) {
+        obj = userService.update(id, obj);
+        return ResponseEntity.ok().body(obj);
     }
 }
